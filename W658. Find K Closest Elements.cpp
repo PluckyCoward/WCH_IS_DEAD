@@ -1,4 +1,4 @@
-//logN + k 二分+双指针
+//O(logN + k) 二分+双指针
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
@@ -30,7 +30,7 @@ public:
     }
 };
 
-//logN 窗口 二分
+//O(logN) 二分查找最优区间的左边界
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
