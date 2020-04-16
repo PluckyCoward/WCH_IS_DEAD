@@ -1,7 +1,7 @@
 class Solution {
 public:
     string reverseVowels(string s) {
-        unordered_set<int>s1 = {'a','e','i','o','u','A','E','I','O','U'};
+        unordered_set<char>s1 = {'a','e','i','o','u','A','E','I','O','U'};
         int left = 0,right = s.length() - 1;
         while(left < right){
             if(s1.count(s[left]) == 0){
@@ -12,11 +12,7 @@ public:
                 right--;
                 continue;
             }
-            char temp = s[left];
-            s[left] = s[right];
-            s[right] = temp;
-            left++;
-            right--;
+            swap(s[left++],s[right--]);
         }
         return s;
     }
