@@ -16,3 +16,24 @@ public:
             dfs(root->right);
     }
 };
+
+//迭代
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode*> s;
+        TreeNode* rt = root;
+        while(rt || s.size()){
+            while (rt){
+                s.push(rt);
+                res.push_back(rt->val);
+                rt = rt->left;
+            }
+            rt = s.top();
+            s.pop();
+            rt = rt->right;
+        }
+        return res;
+    }
+};
