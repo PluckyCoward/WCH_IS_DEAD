@@ -67,8 +67,9 @@ public:
             first = first->next;
             length++;
         }
-        first->next = first->next->next;
+        ListNode* node = first->next;
+        first->next = node->next;
         count--;
+        delete(node);
     }
 };
-
