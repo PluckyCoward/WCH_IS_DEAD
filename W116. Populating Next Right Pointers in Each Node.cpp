@@ -1,14 +1,19 @@
+//dfs
 class Solution {
 public:
     Node* connect(Node* root) {
-        if (root == NULL)
+        return dfs(root);
+    }
+    
+    Node* dfs(Node* node) {
+        if (!node)
             return NULL;
-        if (root->left)
-            root->left->next = root->right;
-        if (root->right)
-            root->right->next = (root->next ? root->next->left : NULL);
-        connect(root->left);
-        connect(root->right);
-        return root;        
+        if (node->left)
+            node->left->next = node->right;
+        if (node->right)
+            node->right->next = node->next ? node->next->left : NULL;
+        dfs(node->left);
+        dfs(node->right);
+        return node;
     }
 };
