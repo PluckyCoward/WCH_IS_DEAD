@@ -29,3 +29,31 @@ public:
         return false;
     }
 };
+
+//dfs
+class Solution {
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = 0; j < board[0].size(); j++) {
+                if (dfs(board, word, 0, i, j))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    bool dfs(vector<vector<char>>& board, string& word, int index, int i, int j) {
+        if (board[i][j] != word[index])
+            return false;
+        if (word.size() - 1 == index)
+            return true;
+        index++;
+        char tmp = board[i][j];
+        board[i][j] = '\0';
+        if ((i > 0 && dfs(board, word, index, i - 1, j)) || (j > 0 && dfs(board, word, index, i, j - 1)) || (i < board.size() - 1 && dfs(board, word, index, i + 1, j) || (j < board[0].size() - 1 && dfs(board, word, index, i, j + 1))))
+            return true;
+        board[i][j] = tmp;
+        return false;
+    }
+};
