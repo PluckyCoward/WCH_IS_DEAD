@@ -7,7 +7,7 @@ public:
         dp[2] = 1;
         for(int i = 3;i <= N; i++){
             for(int j = 1;j < i;j++){
-                if(N % j == 0 && dp[j]){
+                if(i % j == 0 && dp[i - j] == 0){
                     dp[i] = 1;
                     break;
                 }
