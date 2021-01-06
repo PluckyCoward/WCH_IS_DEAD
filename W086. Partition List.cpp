@@ -31,3 +31,28 @@ public:
         return l->next;
     }
 };
+
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        ListNode* small = new ListNode(-1);
+        ListNode* large = new ListNode(-1);
+        ListNode* sn = small;
+        ListNode* ln = large;
+        while(head) {
+            if (head->val < x) {
+                sn->next = head;
+                sn = sn->next;
+            }
+            else {
+                ln->next = head;
+                ln = ln->next;
+            }
+            head = head->next;
+        }
+        ln->next = NULL;
+        sn->next = large->next;
+        return small->next;
+
+    }
+};
